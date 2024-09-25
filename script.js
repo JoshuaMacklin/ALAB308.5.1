@@ -117,9 +117,57 @@ console.log("----------------");
     ]
 
     // Sort the array by age.
-    console.log(data.age);
+    console.log(data.sort((a, b) => a.age - b.age));
     // Filter the array to remove entries with an age greater than 50.
+    console.log(data.filter((a) => a.age < 50));
     // Map the array to change the “occupation” key to “job” and increment every age by 1.
+    const job = data.map((x) => x.occupation = "Job")
+
+    console.log(job);
     // Use the reduce method to calculate the sum of the ages.
+    let val = []
+    data.forEach((person) => val.push(Number(person.age)))
+    sum = val.reduce((a,c) => a + c)
+    console.log(`Sum: ${sum}`);
     // Then use the result to calculate the average age.
+    console.log(`Avg: ${sum / data.length}`);
 }
+
+// Part 3: Thinking Critically
+{
+    // Take an object and increment its age field.
+    person = {age: 23, name: "Frank", occupation: "Driver"}
+    function ageIncrement(person) {
+        person.age += 1;
+        return person
+    }
+    console.log(ageIncrement(person));
+
+    // Take an object, make a copy, and increment the age field of the copy. Return the copy.
+    function personCopy(person) {
+        person2 = person;
+        person2.age += 1;
+        return person2
+    }
+
+    console.log(personCopy(person));
+    // For each of the functions above, if the object does not yet contain an age field, create one and set it to 0. Also, add (or modify, as appropriate) an updated_at field that stores a Date object with the current time.
+
+    function ageIncrement2(person) {
+        person.age ? person.age += 1 : person.age = 0
+        person.updated_at = new Date()
+        return person
+    }
+
+    console.log(ageIncrement2(person));
+
+    function personCopy2(person) {
+        person2 = person;
+        person2.age ? person2.age += 1 : person2.age = 0
+        person2.updated_at = new Date()
+        return person2
+    }
+    console.log(personCopy2(person));
+
+}
+
